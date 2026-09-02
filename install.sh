@@ -38,6 +38,27 @@ echo "설치됐습니다."
 echo "  스킬      ~/.claude/skills/iny-build/"
 echo "  작업 폴더  $KB_PATH"
 
+# 판단 근거 문서 · 04·05·06·07·08 이 함께 읽는 기준 한 장입니다.
+# 원본은 저장소 하나에만 있고, 없으면 여기서 같이 받아옵니다.
+GEO="$HOME/.claude/skills/iny-geo-기준"
+if [ ! -f "$GEO/references/기준.md" ]; then
+  echo
+  echo "판단 근거 문서(iny-geo-기준)를 같이 받습니다."
+  TMPGEO="$(mktemp -d)"
+  if git clone -q --depth 1 https://github.com/iny101400-young/iny-geo.git "$TMPGEO/geo" 2>/dev/null; then
+    mkdir -p "$GEO"
+    cp "$TMPGEO/geo/SKILL.md" "$GEO/SKILL.md"
+    rm -rf "$GEO/references"
+    cp -R "$TMPGEO/geo/references" "$GEO/references"
+    echo "  ~/.claude/skills/iny-geo-기준/ 에 깔렸습니다."
+  else
+    echo "  못 받았습니다. 인터넷이 막혔거나 git 이 없습니다."
+    echo "  https://github.com/iny101400-young/iny-geo 에서 직접 받아"
+    echo "  ~/.claude/skills/iny-geo-기준/ 에 두시면 됩니다."
+  fi
+  rm -rf "$TMPGEO"
+fi
+
 # 05 는 04 가 그린 화면을 실제로 짓는 단계입니다. 없으면 여기서 알려주고 멈춥니다.
 if [ ! -f "$KB_PATH/outputs/04-design/화면설계서.html" ]; then
   echo

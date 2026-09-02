@@ -364,10 +364,11 @@ outputs/05-build/
 
 ```
 01 material  →  02 identify  →  03 structure  →  04 design
-→  05 build  →  06 publish  →  07 tech  →  08 measure  ⟳
+→  05 build  →  07 tech  →  06 publish  →  08 measure  ⟳
 ```
 
-다음은 [06 publish](https://github.com/iny101400-young/iny-publish) 입니다.
+다음은 [07 tech](https://github.com/iny101400-young/iny-tech) 입니다.
+**번호는 06 이 앞이지만 07 을 먼저 돌립니다.** 07 이 만든 글쓰기 규칙으로 06 이 글을 씁니다.
 
 ---
 
